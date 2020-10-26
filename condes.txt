@@ -1,0 +1,20 @@
+----------------------------------------------------------------------------------------------
+*** For CPU Usage! ***
+stress --cpu 8 -v --timeout 200s
+
+
+*** For Memory Usage ***
+ dd if=/dev/zero of=/tmp/`date +%Y%m%d%H%M%S` bs=4G count=1 oflag=direct
+  echo {1..100000000}
+
+*** For File system ***
+stress-ng --hdd 5 --hdd-ops 1000000
+stress-ng --hdd 5 --hdd-ops 1000000
+
+*** For Service ***
+Stop-Service -name VSS
+
+*** On Splunk side! ***
+host="rdp1" source="WinEventLog:Application" "SourceName=VSS" shutdown
+
+----------------------------------------------------------------------------------------------
